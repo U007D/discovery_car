@@ -9,9 +9,6 @@ readme = "README.md"
 repository = "https://github.com/u007d/discovery_car"
 version = "0.1.0"
 
-[dependencies]
-thiserror = "*"
-
 [profile.dev]
 codegen-units = 1
 debug = true
@@ -37,3 +34,9 @@ debug-assertions = true
 lto = false
 opt-level = 0
 rpath = false
+
+[dependencies]
+variant_count = "1.0.0"
+
+[target.thumbv7em-none-eabihf.dependencies]
+stm32f3-discovery = "0.3.3"

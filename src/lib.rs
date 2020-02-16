@@ -1,3 +1,4 @@
+#![no_std]
 #![warn(clippy::all, clippy::nursery, clippy::pedantic, rust_2018_idioms)]
 #![forbid(bare_trait_objects)]
 #![allow(clippy::match_bool)]
@@ -17,7 +18,22 @@
 //#![warn(clippy::cargo, clippy::restriction, missing_docs, warnings)]
 //#![deny(warnings)]
 
+mod car;
 mod consts;
 mod error;
+mod motor;
+mod norm;
+mod stm32f3xx_ext;
+
+pub use car::Car;
 pub use error::Error;
-pub type Result<T, E = Error> = std::result::Result<T, E>;
+pub use motor::{Motor, Speeds as MotorSpeeds};
+pub use norm::Norm;
+#[cfg(target = "thumbv7em-none-eabi")]
+use stm32f3_discovery::stm32f3xx_hal::stm32;
+pub use stm32f3xx_ext::Stm32f3xxPeripherals;
+
+pub type Result<T, E = Error> = core::result::Result<T, E>;
+
+#[cfg(target = "thumbv7em-none-eabi")]
+impl Stm32f3xxPeripherals for stm32::Peripherals {}

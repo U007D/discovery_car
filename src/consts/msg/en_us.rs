@@ -1,3 +1,2 @@
 #![allow(dead_code)]
-pub const ERR_INVALID_INT_REPR: &str = "Error: String contents are not a valid representation of \
-                                        an integer";
+pub const ERR_INTERNAL_INDEX_OUT_OF_BOUNDS: &str = "Internal error: Attempted to access collection element by index that was out of bounds";
